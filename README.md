@@ -1,6 +1,21 @@
-# SecureAuth Backend API
+<div align="center">
 
-A production-grade, reusable backend API built with **Python**, **FastAPI**, **SQLAlchemy (Async)**, **PyJWT**, and **PyOTP**. Designed strictly according to **Security+** principles and **OWASP Top 10** mitigations.
+# 🔐 SecureAuth Backend API
+
+### Enterprise-Grade Authentication & Authorization Engine with MFA, RBAC & OWASP Top 10 Hardening
+
+[![CI Status](https://github.com/Drizzy-ul/secure-auth-api/actions/workflows/ci.yml/badge.svg)](https://github.com/Drizzy-ul/secure-auth-api/actions)
+[![Python Version](https://img.shields.io/badge/python-3.10%2B-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.115%2B-009688.svg?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![OWASP Top 10](https://img.shields.io/badge/OWASP-Top%2010%20Compliant-orange.svg)](https://owasp.org/www-project-top-ten/)
+[![Security: RBAC + MFA](https://img.shields.io/badge/Security-RBAC%20%7C%20TOTP%20MFA-red.svg)](#key-security-features)
+
+<p align="center">
+  A production-grade, reusable backend API built with <b>Python</b>, <b>FastAPI</b>, <b>SQLAlchemy (Async)</b>, <b>PyJWT</b>, and <b>PyOTP</b>. Designed strictly according to <b>Security+</b> principles and <b>OWASP Top 10</b> mitigations.
+</p>
+
+</div>
 
 ---
 
