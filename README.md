@@ -1,13 +1,14 @@
 <div align="center">
 
-# 🔐 SecureAuth Backend API
+# ðŸ” SecureAuth Backend API
 
 ### Enterprise-Grade Authentication & Authorization Engine with MFA, RBAC & OWASP Top 10 Hardening
 
 [![CI Status](https://github.com/Drizzy-ul/secure-auth-api/actions/workflows/ci.yml/badge.svg)](https://github.com/Drizzy-ul/secure-auth-api/actions)
 [![Python Version](https://img.shields.io/badge/python-3.10%2B-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115%2B-009688.svg?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED.svg?logo=docker&logoColor=white)](https://github.com/Drizzy-ul/secure-auth-api)](https://opensource.org/licenses/MIT)
 [![OWASP Top 10](https://img.shields.io/badge/OWASP-Top%2010%20Compliant-orange.svg)](https://owasp.org/www-project-top-ten/)
 [![Security: RBAC + MFA](https://img.shields.io/badge/Security-RBAC%20%7C%20TOTP%20MFA-red.svg)](#key-security-features)
 
@@ -61,54 +62,72 @@
 
 ```text
 secure_auth_api/
-├── .env.example                         # Environment configuration template
-├── README.md                            # Documentation & security specs
-├── requirements.txt                     # Project dependencies
-├── app/
-│   ├── main.py                          # FastAPI app entry point & middleware
-│   ├── config.py                        # Pydantic BaseSettings
-│   ├── core/
-│   │   ├── security.py                  # Cryptography, bcrypt, PyJWT token handlers
-│   │   ├── mfa.py                       # PyOTP TOTP, QR codes & backup codes
-│   │   ├── rbac.py                      # Roles, permissions & policy matrix
-│   │   └── rate_limit.py                # SlowAPI limiter setup
-│   ├── db/
-│   │   ├── session.py                   # Async engine & session dependency
-│   │   └── base.py                      # SQLAlchemy Base & timestamp mixins
-│   ├── models/
-│   │   ├── user.py                      # User model with MFA & role attributes
-│   │   ├── token.py                     # Refresh token rotation entity
-│   │   └── audit_log.py                 # Security audit trail model
-│   ├── schemas/
-│   │   ├── auth.py                      # Login, Register, Token & MFA challenge DTOs
-│   │   ├── user.py                      # Profile & role DTOs
-│   │   ├── mfa.py                       # MFA setup, enable, disable DTOs
-│   │   └── audit.py                     # Audit log query DTOs
-│   ├── services/
-│   │   ├── auth_service.py              # Auth business logic, token rotation, replay defense
-│   │   ├── mfa_service.py               # MFA orchestration & backup recovery
-│   │   ├── user_service.py              # User management & role hierarchy
-│   │   └── audit_service.py             # Event recording service
-│   └── api/
-│       ├── deps.py                      # FastAPI security dependencies & RBAC guards
-│       └── v1/
-│           ├── api.py                   # Router aggregator
-│           └── endpoints/
-│               ├── auth.py              # Authentication endpoints
-│               ├── mfa.py               # MFA management endpoints
-│               ├── users.py             # User profile endpoints
-│               └── admin.py             # Security & audit log endpoints
-└── tests/
-    ├── conftest.py                      # Async test database fixtures
-    ├── test_auth.py                     # Auth & token rotation tests
-    ├── test_mfa.py                      # 2FA & recovery code tests
-    ├── test_rbac.py                     # RBAC authorization tests
-    └── test_security.py                 # Security hardening tests
+â”œâ”€â”€ .env.example                         # Environment configuration template
+â”œâ”€â”€ README.md                            # Documentation & security specs
+â”œâ”€â”€ requirements.txt                     # Project dependencies
+â”œâ”€â”€ app/
+â”‚   â”œâ”€â”€ main.py                          # FastAPI app entry point & middleware
+â”‚   â”œâ”€â”€ config.py                        # Pydantic BaseSettings
+â”‚   â”œâ”€â”€ core/
+â”‚   â”‚   â”œâ”€â”€ security.py                  # Cryptography, bcrypt, PyJWT token handlers
+â”‚   â”‚   â”œâ”€â”€ mfa.py                       # PyOTP TOTP, QR codes & backup codes
+â”‚   â”‚   â”œâ”€â”€ rbac.py                      # Roles, permissions & policy matrix
+â”‚   â”‚   â””â”€â”€ rate_limit.py                # SlowAPI limiter setup
+â”‚   â”œâ”€â”€ db/
+â”‚   â”‚   â”œâ”€â”€ session.py                   # Async engine & session dependency
+â”‚   â”‚   â””â”€â”€ base.py                      # SQLAlchemy Base & timestamp mixins
+â”‚   â”œâ”€â”€ models/
+â”‚   â”‚   â”œâ”€â”€ user.py                      # User model with MFA & role attributes
+â”‚   â”‚   â”œâ”€â”€ token.py                     # Refresh token rotation entity
+â”‚   â”‚   â””â”€â”€ audit_log.py                 # Security audit trail model
+â”‚   â”œâ”€â”€ schemas/
+â”‚   â”‚   â”œâ”€â”€ auth.py                      # Login, Register, Token & MFA challenge DTOs
+â”‚   â”‚   â”œâ”€â”€ user.py                      # Profile & role DTOs
+â”‚   â”‚   â”œâ”€â”€ mfa.py                       # MFA setup, enable, disable DTOs
+â”‚   â”‚   â””â”€â”€ audit.py                     # Audit log query DTOs
+â”‚   â”œâ”€â”€ services/
+â”‚   â”‚   â”œâ”€â”€ auth_service.py              # Auth business logic, token rotation, replay defense
+â”‚   â”‚   â”œâ”€â”€ mfa_service.py               # MFA orchestration & backup recovery
+â”‚   â”‚   â”œâ”€â”€ user_service.py              # User management & role hierarchy
+â”‚   â”‚   â””â”€â”€ audit_service.py             # Event recording service
+â”‚   â””â”€â”€ api/
+â”‚       â”œâ”€â”€ deps.py                      # FastAPI security dependencies & RBAC guards
+â”‚       â””â”€â”€ v1/
+â”‚           â”œâ”€â”€ api.py                   # Router aggregator
+â”‚           â””â”€â”€ endpoints/
+â”‚               â”œâ”€â”€ auth.py              # Authentication endpoints
+â”‚               â”œâ”€â”€ mfa.py               # MFA management endpoints
+â”‚               â”œâ”€â”€ users.py             # User profile endpoints
+â”‚               â””â”€â”€ admin.py             # Security & audit log endpoints
+â””â”€â”€ tests/
+    â”œâ”€â”€ conftest.py                      # Async test database fixtures
+    â”œâ”€â”€ test_auth.py                     # Auth & token rotation tests
+    â”œâ”€â”€ test_mfa.py                      # 2FA & recovery code tests
+    â”œâ”€â”€ test_rbac.py                     # RBAC authorization tests
+    â””â”€â”€ test_security.py                 # Security hardening tests
 ```
 
 ---
 
 ## Quick Start
+
+
+### 🐳 Run with Docker & Docker Compose
+
+Run the entire API with a containerized PostgreSQL database:
+
+```bash
+# Start FastAPI and PostgreSQL in detached mode
+docker compose up -d --build
+
+# View container logs
+docker compose logs -f app
+
+# Run healthcheck
+curl http://localhost:8000/health
+```
+
+API docs will be available immediately at `http://localhost:8000/api/v1/docs`.
 
 ### 1. Installation
 
