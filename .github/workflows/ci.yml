@@ -1,4 +1,4 @@
-﻿name: CI & Security Testing
+name: CI & Security Testing
 
 on:
   push:
@@ -17,6 +17,7 @@ jobs:
         python-version: ["3.10", "3.11", "3.12"]
 
     env:
+      PYTHONPATH: "."
       PYTHONUTF8: "1"
       PYTHONIOENCODING: "utf-8"
 
@@ -35,4 +36,4 @@ jobs:
 
     - name: Run Test Suite
       run: |
-        pytest tests/ -v
+        python -m pytest tests/ -v

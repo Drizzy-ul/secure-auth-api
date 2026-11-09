@@ -6,7 +6,9 @@ import pytest
 import pytest_asyncio
 from httpx import ASGITransport, AsyncClient
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
+from sqlalchemy.pool import NullPool
 
+import app.db.session as app_db
 from app.api.deps import get_db
 from app.core.rate_limit import limiter
 from app.core.rbac import Role
@@ -24,6 +26,7 @@ TEST_DATABASE_URL = f"sqlite+aiosqlite:///{TEST_DB_FILE}"
 test_engine = create_async_engine(
     TEST_DATABASE_URL,
     connect_args={"check_same_thread": False},
+    poolclass=NullPool,
     future=True,
 )
 
@@ -34,6 +37,11 @@ TestingSessionLocal = async_sessionmaker(
     autocommit=False,
     autoflush=False,
 )
+
+# Patch app session and engine to test engine
+app_db.engine = test_engine
+app_db.AsyncSessionLocal = TestingSessionLocal
+
 
 
 @pytest_asyncio.fixture(autouse=True)
